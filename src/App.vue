@@ -2,13 +2,34 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/about">About</router-link> |
+      <router-link to="/vuexpage">VuexPage</router-link>
     </div>
+    <div class="fr">{{ token }} {{ fullname }}</div>
     <router-view/>
   </div>
 </template>
 
+<script>
+import { mapState, mapGetters } from 'vuex';
+
+export default {
+  name: 'App',
+  computed: {
+    // 普通compute
+    // ..
+
+    // vuex的state
+    ...mapState(['token']),
+    ...mapGetters(['fullname'])
+  }
+}
+</script>
+
+
 <style>
+.fl {float: left;}
+.fr {float: right;}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
